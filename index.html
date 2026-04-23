@@ -45,7 +45,7 @@
             box-shadow: 
                 0 30px 60px -15px rgba(0, 0, 0, 0.1),
                 var(--ios-glass-highlight);
-            border-radius: 2.5rem; /* Apple Squircle */
+            border-radius: 2rem; /* Apple Squircle */
         }
 
         /* Clean Canvas Area */
@@ -54,7 +54,7 @@
             backdrop-filter: blur(30px) saturate(150%);
             -webkit-backdrop-filter: blur(30px) saturate(150%);
             border: 2px dashed rgba(0, 122, 255, 0.4);
-            border-radius: 2rem;
+            border-radius: 1.5rem;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05), var(--ios-glass-highlight);
         }
@@ -70,17 +70,17 @@
             -webkit-appearance: none;
             width: 100%;
             background: transparent;
-            height: 28px;
+            height: 24px;
         }
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            height: 24px;
-            width: 24px;
+            height: 20px;
+            width: 20px;
             border-radius: 50%;
             background: #ffffff;
             cursor: pointer;
-            margin-top: -6px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0,0,0,0.1);
+            margin-top: -5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0,0,0,0.1);
             transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
         input[type=range]::-webkit-slider-thumb:active {
@@ -88,7 +88,7 @@
         }
         input[type=range]::-webkit-slider-runnable-track {
             width: 100%;
-            height: 12px;
+            height: 10px;
             cursor: pointer;
             background: rgba(0, 0, 0, 0.08);
             border-radius: 999px;
@@ -103,8 +103,8 @@
         input[type="color"] {
             -webkit-appearance: none;
             border: none;
-            width: 44px;
-            height: 44px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             cursor: pointer;
             padding: 0;
@@ -116,7 +116,7 @@
         input[type="color"]::-webkit-color-swatch {
             border: 2px solid rgba(255,255,255,0.8);
             border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
         /* Animations */
@@ -140,143 +140,144 @@
         }
     </style>
 </head>
-<body class="py-10 px-4 sm:px-8">
+<body class="py-8 px-4 sm:px-6">
 
-    <div class="max-w-6xl mx-auto">
+    <!-- ขยายความกว้างสูงสุดจาก max-w-6xl เป็น max-w-[1400px] และให้กว้าง 95% ของจอ -->
+    <div class="max-w-[1400px] w-[95%] mx-auto">
         <!-- Section 1: Image Editor -->
-        <main class="space-y-8 fade-in" style="animation-delay: 0.1s;">
-            <div class="glass-panel p-6 sm:p-10">
+        <main class="space-y-6 fade-in" style="animation-delay: 0.1s;">
+            <div class="glass-panel p-5 sm:p-8">
                 
                 <!-- Shift Buttons (iOS System Colors) -->
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                    <button onclick="addText('กะ A 05.00 - 14.00')" class="ios-btn group relative overflow-hidden bg-[#007AFF] text-white p-6 rounded-[2rem] shadow-lg shadow-[#007AFF]/30 border border-white/20">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+                    <button onclick="addText('กะ A 05.00 - 14.00')" class="ios-btn group relative overflow-hidden bg-[#007AFF] text-white p-4 sm:p-5 rounded-3xl shadow-lg shadow-[#007AFF]/20 border border-white/20">
                         <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
-                        <div class="relative z-10 text-[11px] font-semibold text-blue-100 tracking-widest mb-1 opacity-80">SHIFT A</div>
-                        <div class="relative z-10 text-lg sm:text-xl font-bold tracking-tight">05.00 - 14.00</div>
+                        <div class="relative z-10 text-[10px] font-semibold text-blue-100 tracking-widest mb-1 opacity-80">SHIFT A</div>
+                        <div class="relative z-10 text-base sm:text-lg font-bold tracking-tight">05.00 - 14.00</div>
                     </button>
-                    <button onclick="addText('กะ B 14.00 - 23.00')" class="ios-btn group relative overflow-hidden bg-[#34C759] text-white p-6 rounded-[2rem] shadow-lg shadow-[#34C759]/30 border border-white/20">
+                    <button onclick="addText('กะ B 14.00 - 23.00')" class="ios-btn group relative overflow-hidden bg-[#34C759] text-white p-4 sm:p-5 rounded-3xl shadow-lg shadow-[#34C759]/20 border border-white/20">
                         <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
-                        <div class="relative z-10 text-[11px] font-semibold text-green-100 tracking-widest mb-1 opacity-80">SHIFT B</div>
-                        <div class="relative z-10 text-lg sm:text-xl font-bold tracking-tight">14.00 - 23.00</div>
+                        <div class="relative z-10 text-[10px] font-semibold text-green-100 tracking-widest mb-1 opacity-80">SHIFT B</div>
+                        <div class="relative z-10 text-base sm:text-lg font-bold tracking-tight">14.00 - 23.00</div>
                     </button>
-                    <button onclick="addText('กะ C 00.00 - 05.00')" class="ios-btn group relative overflow-hidden bg-[#5856D6] text-white p-6 rounded-[2rem] shadow-lg shadow-[#5856D6]/30 border border-white/20">
+                    <button onclick="addText('กะ C 00.00 - 05.00')" class="ios-btn group relative overflow-hidden bg-[#5856D6] text-white p-4 sm:p-5 rounded-3xl shadow-lg shadow-[#5856D6]/20 border border-white/20">
                         <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
-                        <div class="relative z-10 text-[11px] font-semibold text-indigo-100 tracking-widest mb-1 opacity-80">SHIFT C</div>
-                        <div class="relative z-10 text-lg sm:text-xl font-bold tracking-tight">00.00 - 05.00</div>
+                        <div class="relative z-10 text-[10px] font-semibold text-indigo-100 tracking-widest mb-1 opacity-80">SHIFT C</div>
+                        <div class="relative z-10 text-base sm:text-lg font-bold tracking-tight">00.00 - 05.00</div>
                     </button>
-                    <button onclick="addText('กะ M 10.00 - 19.00')" class="ios-btn group relative overflow-hidden bg-[#FF3B30] text-white p-6 rounded-[2rem] shadow-lg shadow-[#FF3B30]/30 border border-white/20">
+                    <button onclick="addText('กะ M 10.00 - 19.00')" class="ios-btn group relative overflow-hidden bg-[#FF3B30] text-white p-4 sm:p-5 rounded-3xl shadow-lg shadow-[#FF3B30]/20 border border-white/20">
                         <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
-                        <div class="relative z-10 text-[11px] font-semibold text-red-100 tracking-widest mb-1 opacity-80">SHIFT M</div>
-                        <div class="relative z-10 text-lg sm:text-xl font-bold tracking-tight">10.00 - 19.00</div>
+                        <div class="relative z-10 text-[10px] font-semibold text-red-100 tracking-widest mb-1 opacity-80">SHIFT M</div>
+                        <div class="relative z-10 text-base sm:text-lg font-bold tracking-tight">10.00 - 19.00</div>
                     </button>
                 </div>
 
                 <!-- Custom Text Input (iOS Pill) -->
-                <div class="flex flex-col sm:flex-row gap-3 mb-10 p-2 bg-white/30 backdrop-blur-2xl rounded-[2rem] border border-white/60 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] shadow-sm">
-                    <input type="text" id="custom-text-input" placeholder="พิมพ์ข้อความที่ต้องการเพิ่ม..." class="flex-1 px-6 py-4 rounded-[1.5rem] border-none bg-white/40 focus:outline-none focus:bg-white/60 text-[#1c1c1e] font-semibold placeholder-slate-500 transition-colors shadow-inner" onkeypress="if(event.key === 'Enter') applyCustomText()">
-                    <button onclick="applyCustomText()" class="ios-btn px-8 py-4 bg-[#1c1c1e]/90 backdrop-blur-md text-white rounded-[1.5rem] font-bold shadow-md flex items-center justify-center gap-2 whitespace-nowrap border border-white/20">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" /></svg>
+                <div class="flex flex-col sm:flex-row gap-2 mb-8 p-1.5 bg-white/30 backdrop-blur-2xl rounded-full border border-white/60 shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] shadow-sm">
+                    <input type="text" id="custom-text-input" placeholder="พิมพ์ข้อความที่ต้องการเพิ่ม..." class="flex-1 px-5 py-3 rounded-full border-none bg-white/40 focus:outline-none focus:bg-white/60 text-[#1c1c1e] text-sm font-semibold placeholder-slate-500 transition-colors shadow-inner" onkeypress="if(event.key === 'Enter') applyCustomText()">
+                    <button onclick="applyCustomText()" class="ios-btn px-6 py-3 bg-[#1c1c1e]/90 backdrop-blur-md text-white text-sm rounded-full font-bold shadow-md flex items-center justify-center gap-1.5 whitespace-nowrap border border-white/20">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" /></svg>
                         เพิ่ม
                     </button>
                 </div>
 
                 <!-- Toolbars (iOS Control Center feel) -->
-                <div class="flex flex-col lg:flex-row items-center gap-8 pt-8 border-t border-[rgba(0,0,0,0.05)]">
+                <div class="flex flex-col lg:flex-row items-center gap-6 pt-6 border-t border-[rgba(0,0,0,0.05)]">
                     
                     <!-- Left Tools (Settings Widgets) -->
-                    <div class="w-full lg:flex-1 grid grid-cols-[auto_1fr] gap-4 items-center">
+                    <div class="w-full lg:flex-1 grid grid-cols-[auto_1fr] gap-3 items-center">
                         <!-- Color Picker Widget -->
-                        <div class="bg-white/40 backdrop-blur-2xl p-3 rounded-3xl border border-white/60 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] flex flex-col items-center justify-center h-[90px] w-[90px]">
-                            <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">สี</label>
+                        <div class="bg-white/40 backdrop-blur-2xl p-2.5 rounded-2xl border border-white/60 shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] flex flex-col items-center justify-center h-[70px] w-[70px]">
+                            <label class="text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">สี</label>
                             <input type="color" id="text-color" value="#007AFF">
                         </div>
                         
                         <!-- Font Size Widget -->
-                        <div class="bg-white/40 backdrop-blur-2xl p-5 rounded-3xl border border-white/60 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] h-[90px] flex flex-col justify-center relative">
-                            <div class="flex justify-between items-center mb-3">
-                                <label class="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M9 11v10M15 11v10M5 11h14M5 15h14" /></svg>
+                        <div class="bg-white/40 backdrop-blur-2xl p-4 rounded-2xl border border-white/60 shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] h-[70px] flex flex-col justify-center relative">
+                            <div class="flex justify-between items-center mb-2.5">
+                                <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M9 11v10M15 11v10M5 11h14M5 15h14" /></svg>
                                     ขนาดตัวอักษร
                                 </label>
-                                <span id="font-size-val" class="text-xs font-bold text-[#007AFF] bg-white/70 shadow-sm px-2.5 py-1 rounded-full border border-white">80px</span>
+                                <span id="font-size-val" class="text-[10px] font-bold text-[#007AFF] bg-white/70 shadow-sm px-2 py-0.5 rounded-full border border-white">40px</span>
                             </div>
-                            <input type="range" id="font-size" min="30" max="250" value="80">
+                            <input type="range" id="font-size" min="30" max="250" value="40">
 
                             <!-- Floating Edit/Delete Actions (Shows when text is selected) -->
-                            <div id="selected-actions" class="absolute -top-12 right-0 hidden gap-2">
-                                <button id="btn-edit-text" class="ios-btn p-3 bg-white/60 backdrop-blur-2xl text-[#007AFF] rounded-full shadow-lg border border-white/80" title="แก้ไข">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                            <div id="selected-actions" class="absolute -top-10 right-0 hidden gap-2">
+                                <button id="btn-edit-text" class="ios-btn p-2.5 bg-white/70 backdrop-blur-2xl text-[#007AFF] rounded-full shadow-lg border border-white/80" title="แก้ไข">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
                                 </button>
-                                <button id="btn-delete-text" class="ios-btn p-3 bg-white/60 backdrop-blur-2xl text-[#FF3B30] rounded-full shadow-lg border border-white/80" title="ลบ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                <button id="btn-delete-text" class="ios-btn p-2.5 bg-white/70 backdrop-blur-2xl text-[#FF3B30] rounded-full shadow-lg border border-white/80" title="ลบ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Right Action Buttons -->
-                    <div class="flex flex-wrap gap-3 w-full lg:w-auto h-[90px] items-center">
-                        <button id="btn-file-trigger" class="ios-btn flex-1 lg:flex-none h-full px-6 bg-white/40 backdrop-blur-2xl border border-white/60 text-slate-700 hover:bg-white/60 rounded-3xl font-bold shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] flex flex-col items-center justify-center gap-1.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#007AFF]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
-                            <span class="text-[11px] uppercase tracking-wider">เลือกรูป</span>
+                    <div class="flex flex-wrap gap-2 sm:gap-3 w-full lg:w-auto h-[70px] items-center">
+                        <button id="btn-file-trigger" class="ios-btn flex-1 lg:flex-none h-full px-5 bg-white/40 backdrop-blur-2xl border border-white/60 text-slate-700 hover:bg-white/60 rounded-2xl font-bold shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] flex flex-col items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#007AFF]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
+                            <span class="text-[10px] uppercase tracking-wider">เลือกรูป</span>
                         </button>
                         <input type="file" id="file-input" class="hidden" accept="image/*">
                         
-                        <button id="btn-clear" class="ios-btn h-full px-5 bg-white/40 backdrop-blur-2xl border border-white/60 text-slate-500 hover:text-[#FF3B30] hover:bg-white/60 rounded-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] flex flex-col items-center justify-center gap-1.5" title="ล้างภาพทั้งหมด">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                            <span class="text-[11px] uppercase tracking-wider">ล้าง</span>
+                        <button id="btn-clear" class="ios-btn h-full px-4 bg-white/40 backdrop-blur-2xl border border-white/60 text-slate-500 hover:text-[#FF3B30] hover:bg-white/60 rounded-2xl shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] flex flex-col items-center justify-center gap-1" title="ล้างภาพทั้งหมด">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                            <span class="text-[10px] uppercase tracking-wider">ล้าง</span>
                         </button>
 
-                        <button id="btn-copy-img" class="ios-btn flex-1 lg:w-[120px] h-full bg-[#1c1c1e]/90 backdrop-blur-xl border border-white/20 text-white rounded-3xl font-bold shadow-md flex flex-col items-center justify-center gap-1.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
-                            <span class="text-[11px] uppercase tracking-wider text-slate-300">คัดลอก</span>
+                        <button id="btn-copy-img" class="ios-btn flex-1 lg:w-[100px] h-full bg-[#1c1c1e]/90 backdrop-blur-xl border border-white/20 text-white rounded-2xl font-bold shadow-md flex flex-col items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                            <span class="text-[10px] uppercase tracking-wider text-slate-300">คัดลอก</span>
                         </button>
                         
-                        <button id="btn-download" class="ios-btn flex-1 lg:w-[120px] h-full bg-[#007AFF]/90 backdrop-blur-xl border border-white/20 text-white rounded-3xl font-bold shadow-lg shadow-[#007AFF]/30 flex flex-col items-center justify-center gap-1.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                            <span class="text-[11px] uppercase tracking-wider text-blue-100">บันทึก</span>
+                        <button id="btn-download" class="ios-btn flex-1 lg:w-[100px] h-full bg-[#007AFF]/90 backdrop-blur-xl border border-white/20 text-white rounded-2xl font-bold shadow-lg shadow-[#007AFF]/30 flex flex-col items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                            <span class="text-[10px] uppercase tracking-wider text-blue-100">บันทึก</span>
                         </button>
                     </div>
                 </div>
             </div>
 
             <!-- Hint Text -->
-            <div class="text-center text-sm font-medium text-slate-500/80">
+            <div class="text-center text-xs font-medium text-slate-500/80">
                 คลิกที่ข้อความเพื่อลากย้าย • <strong class="text-slate-600">ดับเบิ้ลคลิก</strong> เพื่อแก้ไขหรือลบ
             </div>
 
-            <!-- Canvas Area -->
-            <div id="canvas-container" class="relative overflow-hidden min-h-[450px] flex items-center justify-center group">
-                <div id="placeholder-text" class="text-center p-12 transition-transform duration-400 group-hover:scale-105">
-                    <div class="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6 text-[#007AFF]">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            <!-- Canvas Area: ปรับ min-h ให้สูงขึ้นจาก 400px เป็น 550px เพื่อให้มีพื้นที่วางรูปสมส่วนขึ้น -->
+            <div id="canvas-container" class="relative overflow-hidden min-h-[550px] flex items-center justify-center group">
+                <div id="placeholder-text" class="text-center p-8 transition-transform duration-400 group-hover:scale-105">
+                    <div class="w-20 h-20 bg-blue-50/80 rounded-full flex items-center justify-center mx-auto mb-4 text-[#007AFF] shadow-inner border border-blue-100/50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                     </div>
-                    <p class="text-2xl font-bold text-slate-800 mb-2 tracking-tight">วางรูปภาพ (Ctrl+V)</p>
-                    <p class="text-slate-500 font-medium">หรือลากไฟล์มาวางบริเวณนี้</p>
+                    <p class="text-xl font-bold text-slate-800 mb-1 tracking-tight">วางรูปภาพ (Ctrl+V)</p>
+                    <p class="text-slate-500 text-sm font-medium">หรือลากไฟล์มาวางบริเวณนี้</p>
                 </div>
-                <canvas id="editor-canvas" class="hidden cursor-crosshair max-w-full h-auto rounded-[2rem]" style="touch-action: none;"></canvas>
+                <canvas id="editor-canvas" class="hidden cursor-crosshair max-w-full h-auto rounded-[1.5rem]" style="touch-action: none;"></canvas>
             </div>
         </main>
 
         <!-- Dynamic Island / Toast Notification -->
-        <div id="toast" class="fixed top-8 left-1/2 -translate-x-1/2 px-6 py-4 bg-[#1c1c1e]/95 backdrop-blur-xl text-white rounded-[2rem] shadow-2xl opacity-0 transform -translate-y-8 transition-all duration-400 pointer-events-none font-bold z-50 flex items-center gap-3 border border-white/10">
-            <div id="toast-icon" class="w-6 h-6"></div>
+        <div id="toast" class="fixed top-8 left-1/2 -translate-x-1/2 px-5 py-3 bg-[#1c1c1e]/95 backdrop-blur-xl text-white rounded-[2rem] shadow-2xl opacity-0 transform -translate-y-8 transition-all duration-400 pointer-events-none font-bold z-50 flex items-center gap-2.5 border border-white/10 text-sm">
+            <div id="toast-icon" class="w-5 h-5"></div>
             <span id="toast-msg" class="tracking-wide">Success</span>
         </div>
 
         <!-- Edit Modal (iOS Modal Card style) -->
         <div id="edit-modal" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-slate-900/30 backdrop-blur-xl transition-opacity duration-300 opacity-0">
-            <div class="bg-[#F2F2F7]/80 sm:bg-white/60 backdrop-blur-3xl rounded-t-[2.5rem] sm:rounded-[2.5rem] p-8 w-full sm:w-11/12 max-w-md shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-white/60 transform translate-y-full sm:translate-y-0 sm:scale-95 transition-transform duration-400" id="edit-modal-content">
-                <div class="w-12 h-1.5 bg-slate-400/50 rounded-full mx-auto mb-6 sm:hidden"></div>
-                <h3 class="text-xl font-bold text-slate-800 mb-6 text-center tracking-tight">
+            <div class="bg-[#F2F2F7]/90 sm:bg-white/70 backdrop-blur-3xl rounded-t-[2rem] sm:rounded-[2rem] p-6 w-full sm:w-11/12 max-w-sm shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-white/60 transform translate-y-full sm:translate-y-0 sm:scale-95 transition-transform duration-400" id="edit-modal-content">
+                <div class="w-10 h-1.5 bg-slate-400/50 rounded-full mx-auto mb-5 sm:hidden"></div>
+                <h3 class="text-lg font-bold text-slate-800 mb-5 text-center tracking-tight">
                     แก้ไขข้อความ
                 </h3>
-                <input type="text" id="edit-text-input" class="w-full px-6 py-4 rounded-2xl border border-white/50 bg-white/50 backdrop-blur-md focus:outline-none focus:border-[#007AFF] focus:ring-4 focus:ring-[#007AFF]/20 shadow-inner text-slate-800 font-semibold mb-8 text-lg transition-all text-center" onkeypress="if(event.key === 'Enter') saveEditedText()">
-                <div class="flex flex-col gap-3">
-                    <button onclick="saveEditedText()" class="ios-btn w-full py-4 bg-[#007AFF]/90 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold text-lg shadow-md">
+                <input type="text" id="edit-text-input" class="w-full px-5 py-3 rounded-xl border border-white/50 bg-white/60 backdrop-blur-md focus:outline-none focus:border-[#007AFF] focus:ring-4 focus:ring-[#007AFF]/20 shadow-inner text-slate-800 font-semibold mb-6 text-base transition-all text-center" onkeypress="if(event.key === 'Enter') saveEditedText()">
+                <div class="flex flex-col gap-2">
+                    <button onclick="saveEditedText()" class="ios-btn w-full py-3 bg-[#007AFF]/90 backdrop-blur-md border border-white/20 text-white rounded-xl font-bold shadow-md">
                         เสร็จสิ้น
                     </button>
-                    <button onclick="closeEditModal()" class="ios-btn w-full py-4 bg-white/50 backdrop-blur-md text-slate-700 rounded-2xl font-bold text-lg shadow-sm border border-white/50">
+                    <button onclick="closeEditModal()" class="ios-btn w-full py-3 bg-white/60 backdrop-blur-md text-slate-700 rounded-xl font-bold shadow-sm border border-white/50">
                         ยกเลิก
                     </button>
                 </div>
@@ -324,7 +325,7 @@
         
         // Global defaults
         let globalColor = '#007AFF'; // Default to iOS Blue
-        let globalSize = 80;
+        let globalSize = 40;
 
         // --- Drag Text State ---
         let isDragging = false;
@@ -473,17 +474,17 @@
                     
                     ctx.save();
                     ctx.strokeStyle = 'rgba(0, 122, 255, 0.8)'; // iOS Blue
-                    ctx.lineWidth = Math.max(4, canvas.width * 0.003);
+                    ctx.lineWidth = Math.max(3, canvas.width * 0.003);
                     
                     // Solid rounded rect instead of dashed for a more modern selection feel
                     ctx.beginPath();
-                    ctx.roundRect(t.x - w/2 - 25, t.y - 15, w + 50, h + 30, 20);
+                    ctx.roundRect(t.x - w/2 - 20, t.y - 12, w + 40, h + 24, 16);
                     ctx.stroke();
                     
                     // Add corner dots
                     ctx.fillStyle = '#007AFF';
-                    const padX = w/2 + 25;
-                    const padY = 15;
+                    const padX = w/2 + 20;
+                    const padY = 12;
                     const corners = [
                         {x: t.x - padX, y: t.y - padY},
                         {x: t.x + padX, y: t.y - padY},
