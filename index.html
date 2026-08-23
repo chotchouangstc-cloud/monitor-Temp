@@ -12,331 +12,220 @@
             --ios-green: #34C759;
             --ios-indigo: #5856D6;
             --ios-red: #FF3B30;
-            --ios-bg: #F2F2F7;
-            --ios-glass: rgba(255, 255, 255, 0.25);
-            --ios-glass-border: rgba(255, 255, 255, 0.6);
-            --ios-glass-highlight: inset 0 1px 1px rgba(255, 255, 255, 0.9), inset 0 -1px 1px rgba(255, 255, 255, 0.2);
         }
 
-        /* iOS Modern Dynamic Background */
         body {
             font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: #d1d9e6;
             background-image: 
-                radial-gradient(circle at 10% 10%, rgba(88, 86, 214, 0.25) 0%, transparent 50%), 
-                radial-gradient(circle at 90% 20%, rgba(52, 199, 89, 0.2) 0%, transparent 50%), 
-                radial-gradient(circle at 50% 80%, rgba(0, 122, 255, 0.25) 0%, transparent 60%),
-                radial-gradient(circle at 80% 90%, rgba(255, 59, 48, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.5) 0%, transparent 40%);
+                radial-gradient(circle at 10% 10%, rgba(88, 86, 214, 0.2) 0%, transparent 50%), 
+                radial-gradient(circle at 90% 20%, rgba(52, 199, 89, 0.15) 0%, transparent 50%), 
+                radial-gradient(circle at 50% 80%, rgba(0, 122, 255, 0.2) 0%, transparent 60%);
             background-attachment: fixed;
             min-height: 100vh;
             color: #1c1c1e;
-            scroll-behavior: smooth;
         }
 
-        /* iOS Ultra-Glass Panel */
         .glass-panel {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 100%);
-            backdrop-filter: blur(60px) saturate(250%);
-            -webkit-backdrop-filter: blur(60px) saturate(250%);
-            border: 1px solid var(--ios-glass-border);
-            border-top-color: rgba(255, 255, 255, 0.9);
-            border-left-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 
-                0 30px 60px -15px rgba(0, 0, 0, 0.1),
-                var(--ios-glass-highlight);
-            border-radius: 2rem; /* Apple Squircle */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.25) 100%);
+            backdrop-filter: blur(40px) saturate(200%);
+            -webkit-backdrop-filter: blur(40px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 1.8rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
-        /* Clean Canvas Area */
         #canvas-container {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100%);
-            backdrop-filter: blur(30px) saturate(150%);
-            -webkit-backdrop-filter: blur(30px) saturate(150%);
+            background: rgba(255, 255, 255, 0.3);
             border: 2px dashed rgba(0, 122, 255, 0.4);
             border-radius: 1.5rem;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05), var(--ios-glass-highlight);
+            transition: all 0.3s ease;
         }
 
         #canvas-container.dragover {
             border-color: var(--ios-blue);
-            background-color: rgba(0, 122, 255, 0.05);
-            transform: scale(1.01);
+            background: rgba(0, 122, 255, 0.1);
         }
 
-        /* iOS Control Center Style Range Slider */
-        input[type=range] {
-            -webkit-appearance: none;
-            width: 100%;
-            background: transparent;
-            height: 24px;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            background: #ffffff;
-            cursor: pointer;
-            margin-top: -5px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0,0,0,0.1);
-            transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        input[type=range]::-webkit-slider-thumb:active {
-            transform: scale(1.2);
-        }
-        input[type=range]::-webkit-slider-runnable-track {
-            width: 100%;
-            height: 10px;
-            cursor: pointer;
-            background: rgba(0, 0, 0, 0.08);
-            border-radius: 999px;
-            transition: background 0.2s;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-        }
-        input[type=range]:focus::-webkit-slider-runnable-track {
-            background: rgba(0, 122, 255, 0.15);
-        }
-
-        /* Modern Color Picker */
-        input[type="color"] {
-            -webkit-appearance: none;
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            padding: 0;
-            background: transparent;
-        }
-        input[type="color"]::-webkit-color-swatch-wrapper {
-            padding: 2px;
-        }
-        input[type="color"]::-webkit-color-swatch {
-            border: 2px solid rgba(255,255,255,0.8);
-            border-radius: 50%;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-
-        /* Animations */
-        .fade-in { animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        /* iOS Button Interaction */
         .ios-btn {
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .ios-btn:hover {
-            transform: scale(1.02);
-            filter: brightness(1.05);
+            transform: translateY(-1px);
+            filter: brightness(1.03);
         }
         .ios-btn:active {
-            transform: scale(0.96);
-            filter: brightness(0.95);
+            transform: scale(0.97);
+        }
+
+        .color-swatch {
+            transition: all 0.15s ease;
+        }
+        .color-swatch:hover {
+            transform: scale(1.15);
+        }
+        .color-swatch.active {
+            ring: 3px solid #007AFF;
+            transform: scale(1.1);
         }
     </style>
 </head>
-<body class="py-8 px-4 sm:px-6">
+<body class="p-3 sm:p-4 lg:p-6 min-h-screen flex items-center justify-center">
 
-    <!-- ขยายความกว้างสูงสุดจาก max-w-6xl เป็น max-w-[1400px] และให้กว้าง 95% ของจอ -->
-    <div class="max-w-[1400px] w-[95%] mx-auto">
-        <!-- Section 1: Image Editor -->
-        <main class="space-y-6 fade-in" style="animation-delay: 0.1s;">
-            <div class="glass-panel p-5 sm:p-8">
-                
-                <!-- Shift Buttons (iOS System Colors) -->
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-                    <button onclick="addText('กะ A 05.00 - 14.00')" class="ios-btn group relative overflow-hidden bg-[#007AFF] text-white p-4 sm:p-5 rounded-3xl shadow-lg shadow-[#007AFF]/20 border border-white/20">
-                        <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
-                        <div class="relative z-10 text-[10px] font-semibold text-blue-100 tracking-widest mb-1 opacity-80">SHIFT A</div>
-                        <div class="relative z-10 text-base sm:text-lg font-bold tracking-tight">05.00 - 14.00</div>
-                    </button>
-                    <button onclick="addText('กะ B 14.00 - 23.00')" class="ios-btn group relative overflow-hidden bg-[#34C759] text-white p-4 sm:p-5 rounded-3xl shadow-lg shadow-[#34C759]/20 border border-white/20">
-                        <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
-                        <div class="relative z-10 text-[10px] font-semibold text-green-100 tracking-widest mb-1 opacity-80">SHIFT B</div>
-                        <div class="relative z-10 text-base sm:text-lg font-bold tracking-tight">14.00 - 23.00</div>
-                    </button>
-                    <button onclick="addText('กะ C 00.00 - 05.00')" class="ios-btn group relative overflow-hidden bg-[#5856D6] text-white p-4 sm:p-5 rounded-3xl shadow-lg shadow-[#5856D6]/20 border border-white/20">
-                        <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
-                        <div class="relative z-10 text-[10px] font-semibold text-indigo-100 tracking-widest mb-1 opacity-80">SHIFT C</div>
-                        <div class="relative z-10 text-base sm:text-lg font-bold tracking-tight">00.00 - 05.00</div>
-                    </button>
-                    <button onclick="addText('กะ M 10.00 - 19.00')" class="ios-btn group relative overflow-hidden bg-[#FF3B30] text-white p-4 sm:p-5 rounded-3xl shadow-lg shadow-[#FF3B30]/20 border border-white/20">
-                        <div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-50"></div>
-                        <div class="relative z-10 text-[10px] font-semibold text-red-100 tracking-widest mb-1 opacity-80">SHIFT M</div>
-                        <div class="relative z-10 text-base sm:text-lg font-bold tracking-tight">10.00 - 19.00</div>
-                    </button>
-                </div>
-
-                <!-- Custom Text Input (iOS Pill) -->
-                <div class="flex flex-col sm:flex-row gap-2 mb-8 p-1.5 bg-white/30 backdrop-blur-2xl rounded-full border border-white/60 shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] shadow-sm">
-                    <input type="text" id="custom-text-input" placeholder="พิมพ์ข้อความที่ต้องการเพิ่ม..." class="flex-1 px-5 py-3 rounded-full border-none bg-white/40 focus:outline-none focus:bg-white/60 text-[#1c1c1e] text-sm font-semibold placeholder-slate-500 transition-colors shadow-inner" onkeypress="if(event.key === 'Enter') applyCustomText()">
-                    <button onclick="applyCustomText()" class="ios-btn px-6 py-3 bg-[#1c1c1e]/90 backdrop-blur-md text-white text-sm rounded-full font-bold shadow-md flex items-center justify-center gap-1.5 whitespace-nowrap border border-white/20">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" /></svg>
-                        เพิ่ม
-                    </button>
-                </div>
-
-                <!-- Toolbars (iOS Control Center feel) -->
-                <div class="flex flex-col lg:flex-row items-center gap-6 pt-6 border-t border-[rgba(0,0,0,0.05)]">
-                    
-                    <!-- Left Tools (Settings Widgets) -->
-                    <div class="w-full lg:flex-1 grid grid-cols-[auto_1fr] gap-3 items-center">
-                        <!-- Color Picker Widget -->
-                        <div class="bg-white/40 backdrop-blur-2xl p-2.5 rounded-2xl border border-white/60 shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] flex flex-col items-center justify-center h-[70px] w-[70px]">
-                            <label class="text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">สี</label>
-                            <input type="color" id="text-color" value="#007AFF">
+    <!-- Main Side-by-Side Container -->
+    <div class="w-full max-w-[1500px] flex flex-col lg:flex-row gap-4 lg:gap-6 items-stretch">
+        
+        <!-- LEFT SIDEBAR: Controls -->
+        <aside class="w-full lg:w-[380px] shrink-0 glass-panel p-3.5 sm:p-4 lg:p-5 flex flex-col justify-between space-y-3 lg:space-y-4">
+            
+            <div class="space-y-3 lg:space-y-4">
+                <!-- Group Temp & TG Wrapper (Side by Side on half-screen) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+                    <!-- Group Temp -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-1.5 lg:mb-2">
+                            <span class="px-2.5 py-0.5 lg:px-3 lg:py-1 rounded-full text-[10px] lg:text-[11px] font-black tracking-widest text-rose-600 bg-rose-500/10 border border-rose-400/30 shadow-sm backdrop-blur-md inline-flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                                TEMP
+                            </span>
                         </div>
-                        
-                        <!-- Font Size Widget -->
-                        <div class="bg-white/40 backdrop-blur-2xl p-4 rounded-2xl border border-white/60 shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] h-[70px] flex flex-col justify-center relative">
-                            <div class="flex justify-between items-center mb-2.5">
-                                <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M9 11v10M15 11v10M5 11h14M5 15h14" /></svg>
-                                    ขนาดตัวอักษร
-                                </label>
-                                <span id="font-size-val" class="text-[10px] font-bold text-[#007AFF] bg-white/70 shadow-sm px-2 py-0.5 rounded-full border border-white">40px</span>
-                            </div>
-                            <input type="range" id="font-size" min="5" max="250" value="40">
-
-                            <!-- Floating Edit/Delete Actions (Shows when text is selected) -->
-                            <div id="selected-actions" class="absolute -top-10 right-0 hidden gap-2">
-                                <button id="btn-edit-text" class="ios-btn p-2.5 bg-white/70 backdrop-blur-2xl text-[#007AFF] rounded-full shadow-lg border border-white/80" title="แก้ไข">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
-                                </button>
-                                <button id="btn-delete-text" class="ios-btn p-2.5 bg-white/70 backdrop-blur-2xl text-[#FF3B30] rounded-full shadow-lg border border-white/80" title="ลบ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                                </button>
-                            </div>
+                        <div class="grid grid-cols-2 gap-1.5 sm:gap-2">
+                            <button onclick="addText('Temp กะ A 05.00-14.00')" class="ios-btn bg-[#007AFF] text-white p-2 lg:p-3 rounded-xl lg:rounded-2xl text-[11px] lg:text-xs font-bold shadow-md shadow-blue-500/20 text-center">
+                                <div class="text-[8px] lg:text-[9px] opacity-80 mb-0.5">SHIFT A</div>
+                                05.00 - 14.00
+                            </button>
+                            <button onclick="addText('Temp กะ B 14.00-23.00')" class="ios-btn bg-[#34C759] text-white p-2 lg:p-3 rounded-xl lg:rounded-2xl text-[11px] lg:text-xs font-bold shadow-md shadow-green-500/20 text-center">
+                                <div class="text-[8px] lg:text-[9px] opacity-80 mb-0.5">SHIFT B</div>
+                                14.00 - 23.00
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Right Action Buttons -->
-                    <div class="flex flex-wrap gap-2 sm:gap-3 w-full lg:w-auto h-[70px] items-center">
-                        <button id="btn-file-trigger" class="ios-btn flex-1 lg:flex-none h-full px-5 bg-white/40 backdrop-blur-2xl border border-white/60 text-slate-700 hover:bg-white/60 rounded-2xl font-bold shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] flex flex-col items-center justify-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#007AFF]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
-                            <span class="text-[10px] uppercase tracking-wider">เลือกรูป</span>
-                        </button>
-                        <input type="file" id="file-input" class="hidden" accept="image/*">
-                        
-                        <button id="btn-clear" class="ios-btn h-full px-4 bg-white/40 backdrop-blur-2xl border border-white/60 text-slate-500 hover:text-[#FF3B30] hover:bg-white/60 rounded-2xl shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] flex flex-col items-center justify-center gap-1" title="ล้างภาพทั้งหมด">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                            <span class="text-[10px] uppercase tracking-wider">ล้าง</span>
-                        </button>
+                    <!-- Group TG -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-1.5 lg:mb-2">
+                            <span class="px-2.5 py-0.5 lg:px-3 lg:py-1 rounded-full text-[10px] lg:text-[11px] font-black tracking-widest text-red-600 bg-red-500/10 border border-red-400/30 shadow-sm backdrop-blur-md inline-flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full bg-red-500"></span>
+                                TG
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-1.5 sm:gap-2">
+                            <button onclick="addText('TG กะ A 05.00-14.00')" class="ios-btn bg-[#007AFF] text-white p-2 lg:p-2.5 rounded-xl lg:rounded-2xl text-[10px] lg:text-[11px] font-bold shadow-md shadow-blue-500/20 text-center">
+                                <div class="text-[7px] lg:text-[8px] opacity-80 mb-0.5">SHIFT A</div>
+                                05.00 - 14.00
+                            </button>
+                            <button onclick="addText('TG กะ B 13.00-22.00')" class="ios-btn bg-[#34C759] text-white p-2 lg:p-2.5 rounded-xl lg:rounded-2xl text-[10px] lg:text-[11px] font-bold shadow-md shadow-green-500/20 text-center">
+                                <div class="text-[7px] lg:text-[8px] opacity-80 mb-0.5">SHIFT B</div>
+                                13.00 - 22.00
+                            </button>
+                            <button onclick="addText('TG กะ C 21.00-05.00')" class="ios-btn bg-[#5856D6] text-white p-2 lg:p-2.5 rounded-xl lg:rounded-2xl text-[10px] lg:text-[11px] font-bold shadow-md shadow-indigo-500/20 text-center">
+                                <div class="text-[7px] lg:text-[8px] opacity-80 mb-0.5">SHIFT C</div>
+                                21.00 - 05.00
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-                        <button id="btn-copy-img" class="ios-btn flex-1 lg:w-[100px] h-full bg-[#1c1c1e]/90 backdrop-blur-xl border border-white/20 text-white rounded-2xl font-bold shadow-md flex flex-col items-center justify-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
-                            <span class="text-[10px] uppercase tracking-wider text-slate-300">คัดลอก</span>
+                <!-- Custom Input & Color Palette Wrapper -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-3 items-center">
+                    <!-- Custom Input -->
+                    <div class="flex gap-2 p-1 bg-white/40 rounded-full border border-white/60 shadow-inner">
+                        <input type="text" id="custom-text-input" placeholder="พิมพ์ข้อความ..." class="flex-1 px-3 py-1.5 lg:px-4 lg:py-2 bg-transparent text-xs font-semibold text-slate-800 focus:outline-none" onkeypress="if(event.key === 'Enter') applyCustomText()">
+                        <button onclick="applyCustomText()" class="ios-btn px-3 py-1.5 lg:px-4 lg:py-2 bg-[#1c1c1e] text-white text-xs rounded-full font-bold shadow-md flex items-center gap-1 shrink-0">
+                            + เพิ่ม
                         </button>
-                        
-                        <button id="btn-download" class="ios-btn flex-1 lg:w-[100px] h-full bg-[#007AFF]/90 backdrop-blur-xl border border-white/20 text-white rounded-2xl font-bold shadow-lg shadow-[#007AFF]/30 flex flex-col items-center justify-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                            <span class="text-[10px] uppercase tracking-wider text-blue-100">บันทึก</span>
-                        </button>
+                    </div>
+
+                    <!-- Color Palette Section -->
+                    <div class="bg-white/40 p-2.5 lg:p-3.5 rounded-2xl border border-white/60">
+                        <div class="flex items-center justify-between mb-1.5 lg:mb-2">
+                            <label class="text-xs font-bold text-slate-700">เลือกสี</label>
+                            <input type="color" id="custom-color-picker" class="w-5 h-5 lg:w-6 lg:h-6 rounded-full border-none cursor-pointer bg-transparent" title="เลือกสีอื่นๆ">
+                        </div>
+                        <div id="color-palette" class="grid grid-cols-8 gap-1.5 lg:gap-2 p-0.5"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Hint Text -->
-            <div class="text-center text-xs font-medium text-slate-500/80">
-                คลิกที่ข้อความเพื่อลากย้าย • <strong class="text-slate-600">ดับเบิ้ลคลิก</strong> เพื่อแก้ไขหรือลบ
-            </div>
+            <!-- Action Buttons Area -->
+            <div class="space-y-1.5 lg:space-y-2 pt-1">
+                <div class="grid grid-cols-2 lg:grid-cols-1 gap-2">
+                    <button id="btn-clear" class="ios-btn py-2.5 lg:py-3.5 bg-white/70 border border-white/90 rounded-xl lg:rounded-2xl font-bold text-slate-600 hover:text-red-500 shadow-sm flex items-center justify-center gap-1.5 lg:gap-2">
+                        <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        <span class="text-xs lg:text-sm font-extrabold tracking-wide">ล้าง</span>
+                    </button>
 
-            <!-- Canvas Area: ปรับ min-h ให้สูงขึ้นจาก 400px เป็น 550px เพื่อให้มีพื้นที่วางรูปสมส่วนขึ้น -->
-            <div id="canvas-container" class="relative overflow-hidden min-h-[550px] flex items-center justify-center group">
-                <div id="placeholder-text" class="text-center p-8 transition-transform duration-400 group-hover:scale-105">
-                    <div class="w-20 h-20 bg-blue-50/80 rounded-full flex items-center justify-center mx-auto mb-4 text-[#007AFF] shadow-inner border border-blue-100/50">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                    </div>
-                    <p class="text-xl font-bold text-slate-800 mb-1 tracking-tight">วางรูปภาพ (Ctrl+V)</p>
-                    <p class="text-slate-500 text-sm font-medium">หรือลากไฟล์มาวางบริเวณนี้</p>
+                    <button id="btn-copy-img" class="ios-btn py-2.5 lg:py-4 bg-[#1c1c1e] text-white rounded-xl lg:rounded-2xl font-bold shadow-lg shadow-black/20 flex items-center justify-center gap-1.5 lg:gap-2">
+                        <svg class="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                        <span class="text-xs lg:text-sm font-extrabold tracking-wide">คัดลอก</span>
+                    </button>
                 </div>
-                <canvas id="editor-canvas" class="hidden cursor-crosshair max-w-full h-auto rounded-[1.5rem]" style="touch-action: none;"></canvas>
+            </div>
+            
+        </aside>
+
+        <!-- RIGHT SIDE: Canvas Editor Workspace -->
+        <main class="flex-1 glass-panel p-3 sm:p-4 flex flex-col items-center justify-center relative min-h-[400px] lg:min-h-[500px]">
+            <div id="canvas-container" class="w-full h-full min-h-[380px] lg:min-h-[520px] flex items-center justify-center relative overflow-hidden p-2">
+                <div id="placeholder-text" class="text-center p-6 lg:p-8 transition-transform hover:scale-105">
+                    <div class="w-12 h-12 lg:w-16 lg:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2 lg:mb-3 text-[#007AFF]">
+                        <svg class="w-6 h-6 lg:w-8 lg:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
+                    <p class="text-base lg:text-lg font-bold text-slate-800 mb-1">วางรูปภาพ (Ctrl+V)</p>
+                    <p class="text-slate-500 text-xs">หรือลากไฟล์มาวางบริเวณนี้</p>
+                </div>
+                <canvas id="editor-canvas" class="hidden max-w-full max-h-[75vh] lg:max-h-[80vh] rounded-2xl shadow-lg"></canvas>
             </div>
         </main>
+    </div>
 
-        <!-- Dynamic Island / Toast Notification -->
-        <div id="toast" class="fixed top-8 left-1/2 -translate-x-1/2 px-5 py-3 bg-[#1c1c1e]/95 backdrop-blur-xl text-white rounded-[2rem] shadow-2xl opacity-0 transform -translate-y-8 transition-all duration-400 pointer-events-none font-bold z-50 flex items-center gap-2.5 border border-white/10 text-sm">
-            <div id="toast-icon" class="w-5 h-5"></div>
-            <span id="toast-msg" class="tracking-wide">Success</span>
-        </div>
-
-        <!-- Edit Modal (iOS Modal Card style) -->
-        <div id="edit-modal" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-slate-900/30 backdrop-blur-xl transition-opacity duration-300 opacity-0">
-            <div class="bg-[#F2F2F7]/90 sm:bg-white/70 backdrop-blur-3xl rounded-t-[2rem] sm:rounded-[2rem] p-6 w-full sm:w-11/12 max-w-sm shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-white/60 transform translate-y-full sm:translate-y-0 sm:scale-95 transition-transform duration-400" id="edit-modal-content">
-                <div class="w-10 h-1.5 bg-slate-400/50 rounded-full mx-auto mb-5 sm:hidden"></div>
-                <h3 class="text-lg font-bold text-slate-800 mb-5 text-center tracking-tight">
-                    แก้ไขข้อความ
-                </h3>
-                <input type="text" id="edit-text-input" class="w-full px-5 py-3 rounded-xl border border-white/50 bg-white/60 backdrop-blur-md focus:outline-none focus:border-[#007AFF] focus:ring-4 focus:ring-[#007AFF]/20 shadow-inner text-slate-800 font-semibold mb-6 text-base transition-all text-center" onkeypress="if(event.key === 'Enter') saveEditedText()">
-                <div class="flex flex-col gap-2">
-                    <button onclick="saveEditedText()" class="ios-btn w-full py-3 bg-[#007AFF]/90 backdrop-blur-md border border-white/20 text-white rounded-xl font-bold shadow-md">
-                        เสร็จสิ้น
-                    </button>
-                    <button onclick="closeEditModal()" class="ios-btn w-full py-3 bg-white/60 backdrop-blur-md text-slate-700 rounded-xl font-bold shadow-sm border border-white/50">
-                        ยกเลิก
-                    </button>
-                </div>
-            </div>
-        </div>
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-6 left-1/2 -translate-x-1/2 px-5 py-2.5 bg-[#1c1c1e] text-white text-xs font-bold rounded-full shadow-2xl opacity-0 transition-all duration-300 pointer-events-none z-50 flex items-center gap-2">
+        <span id="toast-msg">Success</span>
     </div>
 
     <script>
-        // --- Core Utilities ---
-        function showToast(msg, isError = false) {
-            const toast = document.getElementById('toast');
-            const icon = document.getElementById('toast-icon');
-            document.getElementById('toast-msg').innerText = msg;
-            
-            icon.innerHTML = isError 
-                ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#FF3B30]"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>'
-                : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#34C759]"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>';
-
-            toast.classList.remove('opacity-0', '-translate-y-8');
-            toast.classList.add('opacity-100', 'translate-y-0');
-            setTimeout(() => {
-                toast.classList.add('opacity-0', '-translate-y-8');
-                toast.classList.remove('opacity-100', 'translate-y-0');
-            }, 3000);
-        }
-
-        // --- Image Editor Logic ---
         const canvas = document.getElementById('editor-canvas');
         const ctx = canvas.getContext('2d');
-        const placeholder = document.getElementById('placeholder-text');
-        const fileInput = document.getElementById('file-input');
         const container = document.getElementById('canvas-container');
-        
-        // UI Inputs
-        const fontSizeInput = document.getElementById('font-size');
-        const fontSizeVal = document.getElementById('font-size-val');
-        const textColorInput = document.getElementById('text-color');
-        const selectedActions = document.getElementById('selected-actions');
-        
+        const placeholder = document.getElementById('placeholder-text');
+
+        const colors = [
+            '#000000', '#3A3A3C', '#FF3B30', '#FF9500', '#FFCC00', '#34C759', '#007AFF', '#5856D6',
+            '#FFFFFF', '#8E8E93', '#FF2D55', '#FFD60A', '#30D158', '#64D2FF', '#0A84FF', '#BF5AF2'
+        ];
+        let currentColor = '#007AFF';
+
         let currentImage = null;
-        
-        // --- Array of Text Objects ---
-        let texts = []; 
-        let selectedTextIndex = -1;
-        
-        // Global defaults
-        let globalColor = '#007AFF'; // Default to iOS Blue
-        let globalSize = 40;
+        let texts = [];
+        let selectedIndex = -1;
 
-        // --- Drag Text State ---
         let isDragging = false;
+        let isResizing = false;
+        let activeHandle = null;
         let dragOffset = { x: 0, y: 0 };
+        let initialResizeState = null;
 
-        // Handle File Input
-        document.getElementById('btn-file-trigger').onclick = () => fileInput.click();
-        fileInput.onchange = (e) => {
-            const file = e.target.files[0];
-            if (file) handleImageFile(file);
-        };
+        const paletteContainer = document.getElementById('color-palette');
+        const customColorPicker = document.getElementById('custom-color-picker');
+
+        colors.forEach((color) => {
+            const btn = document.createElement('button');
+            btn.className = `w-5 h-5 lg:w-6 lg:h-6 rounded-full color-swatch border border-slate-300 shadow-sm flex items-center justify-center`;
+            btn.style.backgroundColor = color;
+            btn.onclick = () => selectColor(color);
+            paletteContainer.appendChild(btn);
+        });
+
+        customColorPicker.oninput = (e) => selectColor(e.target.value);
+
+        function selectColor(hex) {
+            currentColor = hex;
+            if (selectedIndex !== -1) {
+                texts[selectedIndex].color = hex;
+                renderCanvas();
+            }
+        }
 
         window.addEventListener('paste', (e) => {
             const items = e.clipboardData.items;
@@ -352,8 +241,7 @@
         container.addEventListener('drop', (e) => {
             e.preventDefault();
             container.classList.remove('dragover');
-            const file = e.dataTransfer.files[0];
-            if (file && file.type.startsWith('image/')) handleImageFile(file);
+            if (e.dataTransfer.files[0]) handleImageFile(e.dataTransfer.files[0]);
         });
 
         function handleImageFile(file) {
@@ -362,91 +250,73 @@
                 const img = new Image();
                 img.onload = () => {
                     currentImage = img;
-                    texts = []; 
-                    selectedTextIndex = -1;
-                    updateSelectionUI();
-                    renderCanvas();
+                    texts = [];
+                    selectedIndex = -1;
                     placeholder.classList.add('hidden');
                     canvas.classList.remove('hidden');
-                    container.classList.remove('border-dashed', 'border-2'); 
-                    container.style.border = 'none';
-                    container.style.background = 'transparent';
-                    container.style.backdropFilter = 'none';
-                    container.style.boxShadow = 'none';
-                    showToast("นำเข้าภาพเรียบร้อย");
+                    renderCanvas();
+                    showToast("วางรูปภาพเรียบร้อย");
                 };
                 img.src = e.target.result;
             };
             reader.readAsDataURL(file);
         }
 
-        function addText(text) {
+        function addText(textStr) {
             if (!currentImage) return showToast("กรุณาวางรูปภาพก่อนเพิ่มข้อความ", true);
             
-            let newY = canvas.height * 0.05;
-            if (texts.length > 0) {
-                newY += (texts.length % 5) * (globalSize + 15);
-            }
-
-            texts.push({
-                text: text,
+            const newText = {
+                text: textStr,
                 x: canvas.width / 2,
-                y: newY,
-                color: globalColor,
-                size: globalSize
-            });
-            
-            selectedTextIndex = texts.length - 1;
-            updateSelectionUI();
+                y: canvas.height / 3 + (texts.length * 30),
+                color: currentColor,
+                size: 36
+            };
+            texts.push(newText);
+            selectedIndex = texts.length - 1;
             renderCanvas();
         }
 
         function applyCustomText() {
             const input = document.getElementById('custom-text-input');
-            const text = input.value.trim();
-            if (!text) {
-                showToast("กรุณาพิมพ์ข้อความที่ต้องการก่อน", true);
-                input.focus();
-                return;
-            }
-            addText(text);
-            input.value = ''; 
-        }
-
-        function updateSelectionUI() {
-            if (selectedTextIndex !== -1) {
-                selectedActions.classList.remove('hidden');
-                selectedActions.classList.add('flex');
-                
-                globalSize = texts[selectedTextIndex].size;
-                fontSizeInput.value = globalSize;
-                fontSizeVal.innerText = `${globalSize}px`;
-                
-                globalColor = texts[selectedTextIndex].color;
-                textColorInput.value = globalColor;
-            } else {
-                selectedActions.classList.add('hidden');
-                selectedActions.classList.remove('flex');
+            if (input.value.trim()) {
+                addText(input.value.trim());
+                input.value = '';
             }
         }
 
-        // --- Handle Settings Updates ---
-        textColorInput.oninput = (e) => {
-            globalColor = e.target.value;
-            if (selectedTextIndex !== -1) {
-                texts[selectedTextIndex].color = globalColor;
-                renderCanvas();
-            }
-        };
+        function getTextBounds(t) {
+            ctx.font = `800 ${t.size}px Sarabun, sans-serif`;
+            const metrics = ctx.measureText(t.text);
+            const w = metrics.width;
+            const h = t.size;
+            const padX = 12;
+            const padY = 6;
 
-        fontSizeInput.oninput = (e) => {
-            globalSize = parseInt(e.target.value);
-            fontSizeVal.innerText = `${globalSize}px`;
-            if (selectedTextIndex !== -1) {
-                texts[selectedTextIndex].size = globalSize;
-                renderCanvas();
-            }
-        };
+            const left = t.x - w / 2 - padX;
+            const right = t.x + w / 2 + padX;
+            const top = t.y - padY;
+            const bottom = t.y + h + padY;
+
+            const handleRadius = Math.max(5, Math.min(10, t.size * 0.2));
+            const deleteRadius = Math.max(8, Math.min(14, t.size * 0.3));
+
+            return {
+                left, right, top, bottom, width: right - left, height: bottom - top,
+                center: { x: t.x, y: t.y + h / 2 },
+                handles: {
+                    tl: { x: left, y: top, r: handleRadius },
+                    tr: { x: right, y: top, r: handleRadius },
+                    bl: { x: left, y: bottom, r: handleRadius },
+                    br: { x: right, y: bottom, r: handleRadius }
+                },
+                deleteBtn: {
+                    x: (left + right) / 2,
+                    y: top - deleteRadius - 8,
+                    r: deleteRadius
+                }
+            };
+        }
 
         function renderCanvas() {
             if (!currentImage) return;
@@ -455,284 +325,219 @@
             ctx.drawImage(currentImage, 0, 0);
 
             texts.forEach((t, i) => {
-                ctx.font = `800 ${t.size}px Sarabun, -apple-system, sans-serif`;
+                ctx.font = `800 ${t.size}px Sarabun, sans-serif`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'top';
-                
+
                 ctx.strokeStyle = 'white';
-                ctx.lineWidth = t.size * 0.18;
+                ctx.lineWidth = Math.max(2, t.size * 0.18);
                 ctx.lineJoin = 'round';
                 ctx.strokeText(t.text, t.x, t.y);
 
-                ctx.fillStyle = t.color; 
+                ctx.fillStyle = t.color;
                 ctx.fillText(t.text, t.x, t.y);
 
-                if (i === selectedTextIndex) {
-                    const metrics = ctx.measureText(t.text);
-                    const w = metrics.width;
-                    const h = t.size;
-                    
-                    ctx.save();
-                    ctx.strokeStyle = 'rgba(0, 122, 255, 0.8)'; // iOS Blue
-                    ctx.lineWidth = Math.max(3, canvas.width * 0.003);
-                    
-                    // Solid rounded rect instead of dashed for a more modern selection feel
+                if (i === selectedIndex) {
+                    const bounds = getTextBounds(t);
+
+                    ctx.strokeStyle = '#007AFF';
+                    ctx.lineWidth = Math.max(1.5, canvas.width * 0.002);
                     ctx.beginPath();
-                    ctx.roundRect(t.x - w/2 - 20, t.y - 12, w + 40, h + 24, 16);
+                    ctx.roundRect(bounds.left, bounds.top, bounds.width, bounds.height, 6);
                     ctx.stroke();
-                    
-                    // Add corner dots
-                    ctx.fillStyle = '#007AFF';
-                    const padX = w/2 + 20;
-                    const padY = 12;
-                    const corners = [
-                        {x: t.x - padX, y: t.y - padY},
-                        {x: t.x + padX, y: t.y - padY},
-                        {x: t.x - padX, y: t.y + h + padY},
-                        {x: t.x + padX, y: t.y + h + padY}
-                    ];
-                    corners.forEach(c => {
+
+                    const del = bounds.deleteBtn;
+                    ctx.beginPath();
+                    ctx.arc(del.x, del.y, del.r, 0, Math.PI * 2);
+                    ctx.fillStyle = '#FF3B30';
+                    ctx.fill();
+                    ctx.strokeStyle = '#FFFFFF';
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+
+                    ctx.strokeStyle = '#FFFFFF';
+                    ctx.lineWidth = Math.max(1.5, del.r * 0.25);
+                    ctx.beginPath();
+                    const cross = del.r * 0.4;
+                    ctx.moveTo(del.x - cross, del.y - cross);
+                    ctx.lineTo(del.x + cross, del.y + cross);
+                    ctx.moveTo(del.x + cross, del.y - cross);
+                    ctx.lineTo(del.x - cross, del.y + cross);
+                    ctx.stroke();
+
+                    Object.values(bounds.handles).forEach(h => {
                         ctx.beginPath();
-                        ctx.arc(c.x, c.y, ctx.lineWidth * 1.5, 0, Math.PI*2);
+                        ctx.arc(h.x, h.y, h.r, 0, Math.PI * 2);
+                        ctx.fillStyle = '#007AFF';
                         ctx.fill();
-                        ctx.strokeStyle = 'white';
-                        ctx.lineWidth = 2;
+                        ctx.strokeStyle = '#FFFFFF';
+                        ctx.lineWidth = 1.5;
                         ctx.stroke();
                     });
-                    
-                    ctx.restore();
                 }
             });
         }
 
-        document.getElementById('btn-clear').onclick = () => {
-            currentImage = null; 
-            texts = [];
-            selectedTextIndex = -1;
-            updateSelectionUI();
-            canvas.classList.add('hidden'); 
-            placeholder.classList.remove('hidden');
-            
-            // Restore container styling
-            container.style.border = '';
-            container.classList.add('border-dashed', 'border-2');
-            container.style.background = '';
-            container.style.backdropFilter = '';
-            container.style.boxShadow = '';
-            
-            showToast("ล้างข้อมูลแล้ว");
-        };
-
-        // --- Edit and Delete Actions ---
-        const editModal = document.getElementById('edit-modal');
-        const editModalContent = document.getElementById('edit-modal-content');
-        const editTextInput = document.getElementById('edit-text-input');
-
-        function promptEditText() {
-            if (selectedTextIndex === -1) return;
-            editTextInput.value = texts[selectedTextIndex].text;
-            
-            editModal.classList.remove('hidden');
-            editModal.classList.add('flex');
-            
-            setTimeout(() => {
-                editModal.classList.remove('opacity-0');
-                if(window.innerWidth >= 640) {
-                    editModalContent.classList.remove('scale-95');
-                } else {
-                    editModalContent.classList.remove('translate-y-full');
-                }
-                editTextInput.focus();
-                // Select all text for easy replacement
-                editTextInput.setSelectionRange(0, editTextInput.value.length);
-            }, 10);
-        }
-
-        function closeEditModal() {
-            editModal.classList.add('opacity-0');
-            if(window.innerWidth >= 640) {
-                editModalContent.classList.add('scale-95');
-            } else {
-                editModalContent.classList.add('translate-y-full');
-            }
-            setTimeout(() => {
-                editModal.classList.add('hidden');
-                editModal.classList.remove('flex');
-            }, 400);
-        }
-
-        function saveEditedText() {
-            if (selectedTextIndex === -1) return;
-            const newText = editTextInput.value.trim();
-            
-            if (newText === "") {
-                deleteSelectedText();
-            } else {
-                texts[selectedTextIndex].text = newText;
-                renderCanvas();
-                showToast("อัปเดตข้อความแล้ว");
-            }
-            closeEditModal();
-        }
-
-        function deleteSelectedText() {
-            if (selectedTextIndex === -1) return;
-            texts.splice(selectedTextIndex, 1);
-            selectedTextIndex = -1;
-            updateSelectionUI();
-            renderCanvas();
-            showToast("ลบข้อความแล้ว");
-        }
-
-        document.getElementById('btn-edit-text').onclick = promptEditText;
-        document.getElementById('btn-delete-text').onclick = deleteSelectedText;
-
-        // --- Drag Text Implementation ---
-        function getCanvasPos(evt) {
+        function getCanvasCoords(e) {
             const rect = canvas.getBoundingClientRect();
             const scaleX = canvas.width / rect.width;
             const scaleY = canvas.height / rect.height;
-            let clientX = evt.clientX;
-            let clientY = evt.clientY;
-            
-            if (evt.touches && evt.touches.length > 0) {
-                clientX = evt.touches[0].clientX;
-                clientY = evt.touches[0].clientY;
-            }
-            
             return {
-                x: (clientX - rect.left) * scaleX,
-                y: (clientY - rect.top) * scaleY
+                x: (e.clientX - rect.left) * scaleX,
+                y: (e.clientY - rect.top) * scaleY
             };
         }
 
-        function getHitText(pos) {
-            for (let i = texts.length - 1; i >= 0; i--) {
-                const t = texts[i];
-                ctx.font = `800 ${t.size}px Sarabun, sans-serif`;
-                const metrics = ctx.measureText(t.text);
-                const w = metrics.width;
-                const h = t.size;
-                
-                const pad = 30; 
-                const left = t.x - (w / 2) - pad;
-                const right = t.x + (w / 2) + pad;
-                const top = t.y - pad;
-                const bottom = t.y + h + pad;
+        canvas.addEventListener('mousedown', (e) => {
+            const pos = getCanvasCoords(e);
 
-                if (pos.x >= left && pos.x <= right && pos.y >= top && pos.y <= bottom) {
-                    return i;
+            if (selectedIndex !== -1) {
+                const bounds = getTextBounds(texts[selectedIndex]);
+                const del = bounds.deleteBtn;
+                if (Math.hypot(pos.x - del.x, pos.y - del.y) <= del.r * 1.3) {
+                    texts.splice(selectedIndex, 1);
+                    selectedIndex = -1;
+                    renderCanvas();
+                    showToast("ลบข้อความแล้ว");
+                    return;
+                }
+
+                for (let key in bounds.handles) {
+                    const h = bounds.handles[key];
+                    if (Math.hypot(pos.x - h.x, pos.y - h.y) <= h.r * 1.5) {
+                        isResizing = true;
+                        activeHandle = key;
+                        initialResizeState = {
+                            center: bounds.center,
+                            startDist: Math.hypot(pos.x - bounds.center.x, pos.y - bounds.center.y),
+                            startSize: texts[selectedIndex].size
+                        };
+                        return;
+                    }
                 }
             }
-            return -1;
-        }
 
-        function startDrag(e) {
-            if (texts.length === 0) return;
-            const pos = getCanvasPos(e);
-            const hitIdx = getHitText(pos);
-            
-            if (hitIdx !== -1) {
-                isDragging = true;
-                selectedTextIndex = hitIdx; 
-                updateSelectionUI();
-
-                dragOffset.x = texts[hitIdx].x - pos.x;
-                dragOffset.y = texts[hitIdx].y - pos.y;
-                canvas.style.cursor = 'grabbing';
-            } else {
-                if (selectedTextIndex !== -1) {
-                    selectedTextIndex = -1;
-                    updateSelectionUI();
+            let clickedIdx = -1;
+            for (let i = texts.length - 1; i >= 0; i--) {
+                const b = getTextBounds(texts[i]);
+                if (pos.x >= b.left && pos.x <= b.right && pos.y >= b.top && pos.y <= b.bottom) {
+                    clickedIdx = i;
+                    break;
                 }
+            }
+
+            if (clickedIdx !== -1) {
+                selectedIndex = clickedIdx;
+                currentColor = texts[selectedIndex].color;
+                isDragging = true;
+                dragOffset = {
+                    x: pos.x - texts[selectedIndex].x,
+                    y: pos.y - texts[selectedIndex].y
+                };
+            } else {
+                selectedIndex = -1;
             }
             renderCanvas();
-        }
+        });
 
-        function doDrag(e) {
-            if (texts.length === 0) return;
-            const pos = getCanvasPos(e);
-            
-            if (!isDragging) {
-                canvas.style.cursor = getHitText(pos) !== -1 ? 'grab' : 'crosshair';
+        canvas.addEventListener('mousemove', (e) => {
+            const pos = getCanvasCoords(e);
+
+            if (isResizing && selectedIndex !== -1) {
+                const currentDist = Math.hypot(pos.x - initialResizeState.center.x, pos.y - initialResizeState.center.y);
+                const scaleRatio = currentDist / initialResizeState.startDist;
+                let newSize = Math.round(initialResizeState.startSize * scaleRatio);
+                newSize = Math.max(8, Math.min(300, newSize));
+                
+                texts[selectedIndex].size = newSize;
+                renderCanvas();
                 return;
             }
 
-            if (e.type.startsWith('touch')) {
-                e.preventDefault(); 
-            }
-
-            if (selectedTextIndex !== -1) {
-                texts[selectedTextIndex].x = pos.x + dragOffset.x;
-                texts[selectedTextIndex].y = pos.y + dragOffset.y;
+            if (isDragging && selectedIndex !== -1) {
+                texts[selectedIndex].x = pos.x - dragOffset.x;
+                texts[selectedIndex].y = pos.y - dragOffset.y;
                 renderCanvas();
+                return;
             }
-        }
 
-        function stopDrag() {
+            if (selectedIndex !== -1) {
+                const bounds = getTextBounds(texts[selectedIndex]);
+                const del = bounds.deleteBtn;
+                if (Math.hypot(pos.x - del.x, pos.y - del.y) <= del.r * 1.3) {
+                    canvas.style.cursor = 'pointer';
+                    return;
+                }
+
+                let hoveringHandle = false;
+                for (let key in bounds.handles) {
+                    const h = bounds.handles[key];
+                    if (Math.hypot(pos.x - h.x, pos.y - h.y) <= h.r * 1.5) {
+                        canvas.style.cursor = (key === 'tl' || key === 'br') ? 'nwse-resize' : 'nesw-resize';
+                        hoveringHandle = true;
+                        break;
+                    }
+                }
+                if (hoveringHandle) return;
+
+                if (pos.x >= bounds.left && pos.x <= bounds.right && pos.y >= bounds.top && pos.y <= bounds.bottom) {
+                    canvas.style.cursor = 'move';
+                    return;
+                }
+            }
+            canvas.style.cursor = 'default';
+        });
+
+        window.addEventListener('mouseup', () => {
             isDragging = false;
-            canvas.style.cursor = 'crosshair';
-        }
+            isResizing = false;
+            activeHandle = null;
+        });
 
-        canvas.addEventListener('mousedown', startDrag);
-        canvas.addEventListener('mousemove', doDrag);
-        canvas.addEventListener('mouseup', stopDrag);
-        canvas.addEventListener('mouseleave', stopDrag);
-        
-        canvas.addEventListener('dblclick', (e) => {
-            const pos = getCanvasPos(e);
-            const hitIdx = getHitText(pos);
-            if (hitIdx !== -1) {
-                selectedTextIndex = hitIdx;
-                updateSelectionUI();
-                promptEditText();
+        window.addEventListener('keydown', (e) => {
+            if (selectedIndex !== -1 && (e.key === 'Delete' || e.key === 'Backspace')) {
+                if (document.activeElement.tagName === 'INPUT') return;
+                texts.splice(selectedIndex, 1);
+                selectedIndex = -1;
+                renderCanvas();
+                showToast("ลบข้อความแล้ว");
             }
         });
 
-        canvas.addEventListener('touchstart', (e) => {
-            if (getHitText(getCanvasPos(e)) !== -1) {
-                e.preventDefault(); 
-            }
-            startDrag(e);
-        }, { passive: false });
-        canvas.addEventListener('touchmove', doDrag, { passive: false });
-        canvas.addEventListener('touchend', stopDrag);
-        canvas.addEventListener('touchcancel', stopDrag);
-
-        // --- Export logic ---
-        document.getElementById('btn-download').onclick = () => {
-            if (!currentImage) return;
-            const tempSelected = selectedTextIndex;
-            selectedTextIndex = -1; 
-            renderCanvas();
-            
-            setTimeout(() => {
-                const link = document.createElement('a');
-                link.download = `SLA-Report-${Date.now()}.png`;
-                link.href = canvas.toDataURL('image/png', 1.0);
-                link.click();
-                
-                selectedTextIndex = tempSelected;
-                renderCanvas();
-            }, 100);
+        document.getElementById('btn-clear').onclick = () => {
+            currentImage = null;
+            texts = [];
+            selectedIndex = -1;
+            canvas.classList.add('hidden');
+            placeholder.classList.remove('hidden');
+            showToast("ล้างข้อมูลเรียบร้อย");
         };
 
         document.getElementById('btn-copy-img').onclick = () => {
-            if (!currentImage) return;
-            const tempSelected = selectedTextIndex;
-            selectedTextIndex = -1; 
+            if (!currentImage) return showToast("ไม่มีรูปภาพสำหรับคัดลอก", true);
+            const prevSel = selectedIndex;
+            selectedIndex = -1;
             renderCanvas();
-            
-            setTimeout(() => {
-                canvas.toBlob(blob => {
-                    const data = [new ClipboardItem({ [blob.type]: blob })];
-                    navigator.clipboard.write(data).then(() => showToast("คัดลอกรูปลง Clipboard แล้ว"));
-                    
-                    selectedTextIndex = tempSelected;
-                    renderCanvas();
-                });
-            }, 100);
+
+            canvas.toBlob((blob) => {
+                navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+                showToast("คัดลอกรูปภาพลง Clipboard แล้ว");
+                selectedIndex = prevSel;
+                renderCanvas();
+            });
         };
+
+        function showToast(msg, isError = false) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.style.backgroundColor = isError ? '#FF3B30' : '#1c1c1e';
+            toast.classList.remove('opacity-0');
+            toast.classList.add('opacity-100');
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+                toast.classList.remove('opacity-100');
+            }, 2500);
+        }
     </script>
 </body>
 </html>
